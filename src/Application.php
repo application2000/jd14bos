@@ -63,6 +63,17 @@ final class Application extends AbstractWebApplication
 			// Render the message based on the format
 			switch (strtolower($this->input->getWord('format', 'html')))
 			{
+				case 'json' :
+					$data = [
+						'code'    => $exception->getCode(),
+						'message' => $exception->getMessage(),
+						'error'   => true
+					];
+
+					$this->setBody(json_encode($data));
+
+					break;
+
 				case 'html' :
 				default :
 					// Get the exception template
@@ -77,12 +88,39 @@ final class Application extends AbstractWebApplication
 			}
 		}
 
-		// Get the base template
-		ob_start();
-		include JPATH_TEMPLATES . '/index.php';
-		$template = ob_get_clean();
+		// If an HTML view, need to render the template
+		if ($this->input->getWord('format', 'html') == 'html')
+		{
+			// Get the base template
+			ob_start();
+			include JPATH_TEMPLATES . '/index.php';
+			$template = ob_get_clean();
 
-		// Replace the component tag with the body contents, and set the result as the body
-		$this->setBody(str_replace('<bodyContent />', $this->getBody(), $template));
+			// Replace the component tag with the body contents, and set the result as the body
+			$this->setBody(str_replace('<bodyContent />', $this->getBody(), $template));
+		}
+	}
+
+	/**
+	 * Custom initialisation method
+	 *
+	 * @return  void
+	 *
+	 * @since   1.0
+	 */
+	protected function initialise()
+	{
+		// Set the MIME for the application based on format
+		switch (strtolower($this->input->getWord('format', 'html')))
+		{
+			case 'json' :
+				$this->mimeType = 'application/json';
+
+				break;
+
+			// Don't need to do anything for the default case
+			default :
+				break;
+		}
 	}
 }

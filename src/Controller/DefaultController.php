@@ -99,8 +99,11 @@ class DefaultController extends AbstractController
 		// Initialize the view class with its dependencies
 		$view = new $vClass(new $mClass($this->modelState), $paths);
 
-		// Set the layout
-		$view->setLayout(strtolower($input->getWord('layout', 'default')));
+		// Set the layout for HTML views
+		if ($vFormat == 'html')
+		{
+			$view->setLayout(strtolower($input->getWord('layout', 'default')));
+		}
 
 		// Render our view.
 		try
