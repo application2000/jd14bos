@@ -18,7 +18,8 @@
 	},
 	"autoload"   : {
 		"psr-4": {
-			"BabDev\\": "src/"
+			"BabDev\\": "src/",
+			"BabDev\\CLI\\": "cli/"
 		}
 	}
 }
