@@ -1,0 +1,20 @@
+{
+	"name"       : "babdev/framework-sample",
+	"description": "Sample application built on the Joomla! Framework",
+	"license"    : "GPL-2.0+",
+	"authors"    : [
+		{
+			"name" : "Michael Babker",
+			"email": "mbabker@flbab.com"
+		}
+	],
+	"require"    : {
+		"php"               : ">=5.4",
+		"joomla/application": ">=1.1.1"
+	},
+	"autoload"   : {
+		"psr-4": {
+			"BabDev\\": "src/"
+		}
+	}
+}
