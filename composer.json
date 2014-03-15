@@ -10,7 +10,11 @@
 	],
 	"require"    : {
 		"php"               : ">=5.4",
-		"joomla/application": ">=1.1.1"
+		"joomla/application": ">=1.1.1",
+		"joomla/controller" : ">=1.1.1",
+		"joomla/model"      : ">=1.1.1",
+		"joomla/router"     : ">=1.1.1",
+		"joomla/view"       : ">=1.1.1"
 	},
 	"autoload"   : {
 		"psr-4": {
