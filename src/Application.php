@@ -32,7 +32,9 @@ final class Application extends AbstractWebApplication
 			// Instantiate the router
 			$router = (new Router($this->input))
 				->setControllerPrefix('\\BabDev')
-				->setDefaultController('\\Controller\\DefaultController');
+				->setDefaultController('\\Controller\\DefaultController')
+				->addMap('/beers/:number', '\\Controller\\BeerController');
+
 
 			// Fetch the controller
 			/* @type  \Joomla\Controller\AbstractController  $controller */

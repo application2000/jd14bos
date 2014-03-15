@@ -85,12 +85,12 @@ class DefaultController extends AbstractController
 		$paths = new \SplPriorityQueue();
 
 		// Priority 2 - Base templates folder
-		$paths->insert(JPATH_TEMPLATES, 2);
+		$paths->insert(JPATH_TEMPLATES, 1);
 
 		// Priority 1 - View specific folder, if it exists
 		if (is_dir(JPATH_TEMPLATES . '/' . $vName . '/'))
 		{
-			$paths->insert(JPATH_TEMPLATES . '/' . $vName . '/', 1);
+			$paths->insert(JPATH_TEMPLATES . '/' . $vName . '/', 2);
 		}
 
 		// If the controller has anything to inject into the model, do it here via the state
